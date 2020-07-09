@@ -1,0 +1,45 @@
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  height: 100vh;
+  background: #333;
+}
+
+svg {
+  width: 80vmin;
+  max-width: 500px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 5px #000;
+  background: #222;
+}
+
+circle {
+  fill: none;
+  /* animating opacity instead of the alpha component causes flickering in Firefox */
+  stroke: rgba(252, 64, 86, 0);
+  stroke-dasharray: 0.15 0.85;
+  stroke-dashoffset: 0.075;
+  animation: a 4s calc((var(--k)/var(--n) - 1)*4s) infinite;
+  animation-name: a0, a1;
+  animation-timing-function: ease-in, ease-out;
+}
+
+@keyframes a0 {
+  0%, 35% {
+    stroke-dasharray: 1 0;
+    stroke-dashoffset: .5;
+    stroke: #fef7be;
+  }
+  65% {
+    stroke: rgba(99, 253, 184, 0.5);
+  }
+  85% {
+    stroke: rgba(117, 79, 252, 0.3);
+  }
+}
+@keyframes a1 {
+  to {
+    r: var(--rrmax);
+  }
+}
